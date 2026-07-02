@@ -1,18 +1,142 @@
 {
-  "usuarios": [
+  "filmes": [
     {
-      "id": "187cb7e5-e097-4224-8bc7-b610c855e2b1",
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "id": 1,
+      "titulo": "Interestelar",
+      "sinopseCurta": "Exploradores viajam por um buraco de minhoca em busca de um novo lar para a humanidade.",
+      "sinopseCompleta": "Num futuro em que a Terra se torna inóspita, um grupo de exploradores usa um buraco de minhoca recém-descoberto para superar as limitações das viagens espaciais em busca de um novo planeta habitável.",
+      "imagem": "https://picsum.photos/seed/movie1/400/600",
+      "genero": "Ficção Científica",
+      "nota": 8.7,
+      "ano": 2014,
+      "duracao": 169,
+      "tags": ["espaço", "buraco-de-minhoca", "família", "tempo"],
+      "destaque": true
     },
     {
-      "id": "ec37c83d-4b7f-458d-9e10-3fda7d37cd3e",
-      "login": "user",
-      "senha": "123",
-      "nome": "Usuario Comum",
-      "email": "user@abc.com"
+      "id": 2,
+      "titulo": "O Poderoso Chefão",
+      "sinopseCurta": "O patriarca de uma dinastia do crime transfere o controle ao filho relutante.",
+      "sinopseCompleta": "A saga da família Corleone, uma das mais poderosas do crime organizado dos Estados Unidos. Don Vito precisa passar o comando ao filho relutante Michael, em meio a rivalidades e traições.",
+      "imagem": "https://picsum.photos/seed/movie2/400/600",
+      "genero": "Drama",
+      "nota": 9.2,
+      "ano": 1972,
+      "duracao": 175,
+      "tags": ["máfia", "família", "poder", "clássico"],
+      "destaque": true
+    },
+    {
+      "id": 3,
+      "titulo": "Toy Story",
+      "sinopseCurta": "Brinquedos ganham vida quando os humanos não estão por perto.",
+      "sinopseCompleta": "O cowboy Woody é o brinquedo favorito de Andy até a chegada de Buzz Lightyear. A rivalidade entre os dois se transforma em amizade quando eles se perdem e precisam voltar para casa.",
+      "imagem": "https://picsum.photos/seed/movie3/400/600",
+      "genero": "Animação",
+      "nota": 8.3,
+      "ano": 1995,
+      "duracao": 81,
+      "tags": ["brinquedos", "amizade", "aventura", "pixar"],
+      "destaque": false
+    },
+    {
+      "id": 4,
+      "titulo": "Vingadores: Ultimato",
+      "sinopseCurta": "Os heróis remanescentes se unem para desfazer o estalo de Thanos.",
+      "sinopseCompleta": "Após os eventos devastadores causados por Thanos, os Vingadores restantes se reúnem para reverter a destruição e restaurar o equilíbrio do universo numa missão final épica.",
+      "imagem": "https://picsum.photos/seed/movie4/400/600",
+      "genero": "Ação",
+      "nota": 8.4,
+      "ano": 2019,
+      "duracao": 181,
+      "tags": ["super-heróis", "marvel", "viagem-no-tempo", "épico"],
+      "destaque": true
+    },
+    {
+      "id": 5,
+      "titulo": "Se Beber, Não Case!",
+      "sinopseCurta": "Um grupo de amigos perde o noivo após uma despedida de solteiro em Las Vegas.",
+      "sinopseCompleta": "Quatro amigos vão a Las Vegas para a despedida de solteiro de um deles. Na manhã seguinte, sem lembrar de nada, precisam reconstruir a noite para encontrar o noivo desaparecido.",
+      "imagem": "https://picsum.photos/seed/movie5/400/600",
+      "genero": "Comédia",
+      "nota": 7.7,
+      "ano": 2009,
+      "duracao": 100,
+      "tags": ["las-vegas", "amigos", "confusão", "despedida"],
+      "destaque": false
+    },
+    {
+      "id": 6,
+      "titulo": "O Iluminado",
+      "sinopseCurta": "Um escritor enlouquece isolado com a família num hotel assombrado.",
+      "sinopseCompleta": "Jack Torrance aceita ser o zelador de inverno de um hotel isolado nas montanhas. Enquanto forças sobrenaturais tomam conta do lugar, ele mergulha na loucura, ameaçando a própria família.",
+      "imagem": "https://picsum.photos/seed/movie6/400/600",
+      "genero": "Terror",
+      "nota": 8.4,
+      "ano": 1980,
+      "duracao": 146,
+      "tags": ["hotel", "loucura", "sobrenatural", "clássico"],
+      "destaque": false
+    },
+    {
+      "id": 7,
+      "titulo": "Matrix",
+      "sinopseCurta": "Um hacker descobre que a realidade é uma simulação controlada por máquinas.",
+      "sinopseCompleta": "Neo, um programador, descobre que o mundo em que vive é uma simulação criada por máquinas. Ele se junta à resistência para libertar a humanidade e cumprir seu destino como 'O Escolhido'.",
+      "imagem": "https://picsum.photos/seed/movie7/400/600",
+      "genero": "Ficção Científica",
+      "nota": 8.7,
+      "ano": 1999,
+      "duracao": 136,
+      "tags": ["simulação", "hacker", "realidade", "ação"],
+      "destaque": true
+    },
+    {
+      "id": 8,
+      "titulo": "Coringa",
+      "sinopseCurta": "Um comediante fracassado desce à loucura e se torna um ícone do caos.",
+      "sinopseCompleta": "Arthur Fleck é um homem ignorado pela sociedade que sonha em ser comediante. À medida que sofre humilhações, ele mergulha numa espiral de violência que o transforma no infame Coringa.",
+      "imagem": "https://picsum.photos/seed/movie8/400/600",
+      "genero": "Drama",
+      "nota": 8.4,
+      "ano": 2019,
+      "duracao": 122,
+      "tags": ["vilão", "psicológico", "sociedade", "gotham"],
+      "destaque": false
+    },
+    {
+      "id": 9,
+      "titulo": "Homem-Aranha: No Aranhaverso",
+      "sinopseCurta": "Miles Morales conhece aranhas de outras dimensões para salvar o multiverso.",
+      "sinopseCompleta": "O adolescente Miles Morales se torna o Homem-Aranha de sua realidade e descobre um multiverso repleto de outras versões do herói. Juntos, precisam impedir uma ameaça capaz de destruir todas as dimensões.",
+      "imagem": "https://picsum.photos/seed/movie9/400/600",
+      "genero": "Animação",
+      "nota": 8.4,
+      "ano": 2018,
+      "duracao": 117,
+      "tags": ["multiverso", "herói", "estilo", "animação"],
+      "destaque": true
+    },
+    {
+      "id": 10,
+      "titulo": "Mad Max: Estrada da Fúria",
+      "sinopseCurta": "Numa terra devastada, fugitivos enfrentam um tirano em perseguições alucinantes.",
+      "sinopseCompleta": "Num deserto pós-apocalíptico, Max une forças com Furiosa para fugir de um tirano numa perseguição frenética a bordo de veículos improvisados, em busca de liberdade e redenção.",
+      "imagem": "https://picsum.photos/seed/movie10/400/600",
+      "genero": "Ação",
+      "nota": 8.1,
+      "ano": 2015,
+      "duracao": 120,
+      "tags": ["pós-apocalíptico", "perseguição", "deserto", "sobrevivência"],
+      "destaque": false
     }
+  ],
+  "generos": [
+    { "id": 1, "nome": "Ação", "icone": "💥" },
+    { "id": 2, "nome": "Comédia", "icone": "😂" },
+    { "id": 3, "nome": "Drama", "icone": "🎭" },
+    { "id": 4, "nome": "Ficção Científica", "icone": "🚀" },
+    { "id": 5, "nome": "Animação", "icone": "🎨" },
+    { "id": 6, "nome": "Terror", "icone": "👻" }
   ]
 }

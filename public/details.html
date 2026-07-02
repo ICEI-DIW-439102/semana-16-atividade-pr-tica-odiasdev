@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CineData - Catálogo de Filmes</title>
+  <title>Detalhes do Filme - CineData</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -11,30 +11,23 @@
     <div class="container header-content">
       <h1 class="logo">🎬 CineData</h1>
       <nav>
-        <a href="index.html" class="nav-link active">Filmes</a>
+        <a href="index.html" class="nav-link">Filmes</a>
         <a href="cadastro_filme.html" class="nav-link">Cadastrar Filme</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h2>Seu catálogo de filmes favoritos</h2>
-      <p>Dados consumidos em tempo real do JSON Server via API Fetch.</p>
-    </section>
-
-    <section class="cards-section">
-      <h3 class="section-title">Filmes em cartaz</h3>
-      <div id="cards-container" class="cards-grid">
-        <p class="loading">Carregando filmes...</p>
-      </div>
-    </section>
+    <a href="index.html" class="btn-voltar">← Voltar para a lista</a>
+    <div id="details-container" class="details-container">
+      <p class="loading">Carregando detalhes...</p>
+    </div>
   </main>
 
   <footer class="footer">
     <p>&copy; 2026 CineData - Todos os direitos reservados</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="details.js"></script>
 </body>
 </html>
