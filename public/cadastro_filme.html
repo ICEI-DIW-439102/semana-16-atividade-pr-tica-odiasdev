@@ -19,7 +19,7 @@
 
   <main class="container">
     <section class="form-section">
-      <h2>Cadastrar novo filme</h2>
+      <h2 id="form-titulo">Cadastrar novo filme</h2>
       <form id="form-filme" class="form-filme" novalidate>
         <div class="form-group">
           <label for="titulo">Título</label>
@@ -79,7 +79,7 @@
           <label for="destaque">Marcar como destaque</label>
         </div>
 
-        <button type="submit" class="btn-reservar">Cadastrar filme</button>
+        <button type="submit" id="btn-submit" class="btn-reservar">Cadastrar filme</button>
         <p id="form-feedback" class="form-feedback"></p>
       </form>
     </section>
@@ -91,16 +91,51 @@
 
   <script>
     const API_URL = "http://localhost:3000/filmes";
+    const form = document.getElementById("form-filme");
+    const feedback = document.getElementById("form-feedback");
+
+    // Se houver ?id na URL, entramos em modo de EDIÇÃO (UPDATE via PUT)
+    const params = new URLSearchParams(window.location.search);
+    const editId = params.get("id");
 
     /**
-     * CREATE - envia um novo filme via POST
+     * READ - carrega os dados do filme para preencher o formulário (modo edição)
      */
-    document.getElementById("form-filme").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const feedback = document.getElementById("form-feedback");
+    async function carregarParaEdicao(id) {
+      try {
+        const response = await fetch(`${API_URL}/${id}`);
+        if (!response.ok) throw new Error("Filme não encontrado");
+        const f = await response.json();
 
-      // Validação simples no front-end
-      const form = e.target;
+        document.getElementById("form-titulo").textContent = "Editar filme";
+        document.getElementById("btn-submit").textContent = "Salvar alterações";
+        document.title = "Editar Filme - CineData";
+
+        form.titulo.value = f.titulo;
+        form.genero.value = f.genero;
+        form.nota.value = f.nota;
+        form.ano.value = f.ano;
+        form.duracao.value = f.duracao;
+        form.imagem.value = f.imagem;
+        form.sinopseCurta.value = f.sinopseCurta;
+        form.sinopseCompleta.value = f.sinopseCompleta;
+        form.tags.value = (f.tags || []).join(", ");
+        form.destaque.checked = !!f.destaque;
+      } catch (error) {
+        feedback.textContent = "❌ Não foi possível carregar o filme para edição.";
+        feedback.style.color = "var(--cor-erro)";
+      }
+    }
+
+    if (editId) carregarParaEdicao(editId);
+
+    /**
+     * CREATE (POST) ou UPDATE (PUT) conforme o modo
+     */
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Validação no front-end
       if (!form.checkValidity()) {
         feedback.textContent = "⚠️ Preencha todos os campos obrigatórios corretamente.";
         feedback.style.color = "var(--cor-erro)";
@@ -109,7 +144,7 @@
 
       feedback.textContent = "Enviando...";
       const formData = new FormData(form);
-      const novoFilme = {
+      const filme = {
         titulo: formData.get("titulo"),
         genero: formData.get("genero"),
         nota: Number(formData.get("nota")),
@@ -122,18 +157,23 @@
         destaque: formData.get("destaque") === "on"
       };
 
+      const url = editId ? `${API_URL}/${editId}` : API_URL;
+      const metodo = editId ? "PUT" : "POST";
+
       try {
-        const response = await fetch(API_URL, {
-          method: "POST",
+        const response = await fetch(url, {
+          method: metodo,
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(novoFilme)
+          body: JSON.stringify(filme)
         });
-        if (!response.ok) throw new Error("Erro ao cadastrar");
-        feedback.textContent = "✅ Filme cadastrado com sucesso!";
+        if (!response.ok) throw new Error("Erro na requisição");
+        feedback.textContent = editId
+          ? "✅ Filme atualizado com sucesso!"
+          : "✅ Filme cadastrado com sucesso!";
         feedback.style.color = "var(--cor-sucesso)";
-        form.reset();
+        if (!editId) form.reset();
       } catch (error) {
-        feedback.textContent = "❌ Erro ao cadastrar o filme.";
+        feedback.textContent = "❌ Erro ao salvar o filme.";
         feedback.style.color = "var(--cor-erro)";
       }
     });

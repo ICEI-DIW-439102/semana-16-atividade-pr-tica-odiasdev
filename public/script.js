@@ -2,7 +2,7 @@
 const API_URL = "http://localhost:3000/filmes";
 
 /**
- * READ - Busca todos os filmes da API
+ * READ - Busca todos os filmes da API (GET)
  */
 async function fetchItems() {
   try {
@@ -35,8 +35,15 @@ function createCard(item) {
         <span class="card-preco">★ ${item.nota}<small> · ${item.ano}</small></span>
         <a href="details.html?id=${item.id}" class="btn-detalhes">Ver detalhes</a>
       </div>
+      <div class="card-actions">
+        <a href="cadastro_filme.html?id=${item.id}" class="btn-acao btn-editar-card">✏️ Editar</a>
+        <button class="btn-acao btn-excluir-card" data-id="${item.id}">🗑️ Excluir</button>
+      </div>
     </div>
   `;
+
+  // DELETE - exclui o filme e atualiza a lista dinamicamente
+  card.querySelector(".btn-excluir-card").addEventListener("click", () => excluirFilme(item.id, item.titulo));
 
   return card;
 }
@@ -57,11 +64,26 @@ function renderCards(items) {
 }
 
 /**
- * Inicialização
+ * DELETE - Remove um filme e recarrega a lista (atualização dinâmica da DOM)
  */
-async function init() {
+async function excluirFilme(id, titulo) {
+  if (!confirm(`Deseja realmente excluir "${titulo}"?`)) return;
+  try {
+    const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+    if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+    await carregar(); // recarrega a lista sem recarregar a página
+  } catch (error) {
+    console.error("Erro ao excluir:", error);
+    alert("Não foi possível excluir o filme.");
+  }
+}
+
+/**
+ * Carrega e renderiza os filmes
+ */
+async function carregar() {
   const items = await fetchItems();
   renderCards(items);
 }
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", carregar);
