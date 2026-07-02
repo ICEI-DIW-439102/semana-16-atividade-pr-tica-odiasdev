@@ -11,6 +11,24 @@ Back end com **CRUD** completo no **JSON Server**. A entidade principal (`filmes
 - **Proposta de projeto escolhida:** CineData — catálogo de filmes
 - **Breve descrição:** Aplicação que cataloga filmes com listagem, página de detalhes por QueryString, cadastro, edição e exclusão (CRUD completo) sobre a entidade principal `filmes`, servida pelo JSON Server.
 
+## Estrutura do projeto
+
+```
+.
+├── db/
+│   └── db.json                  # Base de dados (JSON Server) - coleção principal: filmes
+├── public/
+│   ├── index.html               # Home com cards (Read + Delete)
+│   ├── script.js                # Lógica da Home e exclusão (Fetch)
+│   ├── details.html / details.js# Detalhes por QueryString (Read + Delete)
+│   ├── cadastro_filme.html      # Create (POST) e Update (PUT) com validação
+│   ├── teste_api.html / teste_api.js  # Página de testes da API
+│   └── styles.css               # Estilos globais
+├── images/                      # Prints da aplicação e dos testes
+├── package.json
+└── README.md
+```
+
 ## Como executar
 
 ```bash
@@ -19,6 +37,33 @@ npm start          # sobe o JSON Server em http://localhost:3000
 ```
 
 Abra as páginas de `public/` no navegador. Endpoints: `/filmes`, `/filmes/{id}`, `/generos`.
+
+## Estrutura de dados utilizada no `db.json`
+
+Coleção principal **filmes** (10 registros) e coleção auxiliar **generos**. Exemplo de um registro:
+
+```json
+{
+  "filmes": [
+    {
+      "id": 1,
+      "titulo": "Interestelar",
+      "sinopseCurta": "Exploradores viajam por um buraco de minhoca em busca de um novo lar.",
+      "sinopseCompleta": "Num futuro em que a Terra se torna inóspita, um grupo de exploradores usa um buraco de minhoca...",
+      "imagem": "https://picsum.photos/seed/movie1/400/600",
+      "genero": "Ficção Científica",
+      "nota": 8.7,
+      "ano": 2014,
+      "duracao": 169,
+      "tags": ["espaço", "buraco-de-minhoca", "família", "tempo"],
+      "destaque": true
+    }
+  ],
+  "generos": [
+    { "id": 1, "nome": "Ação", "icone": "💥" }
+  ]
+}
+```
 
 ## Páginas e CRUD
 
@@ -36,7 +81,7 @@ Ciclo CRUD implementado com Fetch:
 | Update   | PUT         | cadastro_filme.html?id= |
 | Delete   | DELETE      | card da lista / detalhes |
 
-## Páginas da aplicação (Etapa 3)
+## Páginas da aplicação
 
 ### Página inicial (index.html)
 ![Home](images/home.png)
@@ -51,7 +96,7 @@ Os prints abaixo evidenciam as requisições **Fetch** feitas à API, com a conf
 ![Fetch GET](images/teste_get.png)
 ![Fetch POST](images/teste_post.png)
 
-## Testes da API (Etapa 2)
+## Testes da API (GET / POST / PUT / DELETE)
 
 Resultado de cada método HTTP disparado para `http://localhost:3000/filmes`:
 
@@ -67,4 +112,12 @@ Resultado de cada método HTTP disparado para `http://localhost:3000/filmes`:
 ### DELETE — excluir filme
 ![DELETE](images/teste_delete.png)
 
-> Observação: os prints de requisições foram gerados por uma página de testes de API própria (que executa requisições Fetch reais). Os mesmos testes podem ser reproduzidos no Postman/Thunder Client/Insomnia (Etapa 2) e na aba **Network** do DevTools (Etapa 3) usando as mesmas URLs e corpos.
+> Observação: os prints de requisições foram gerados por uma página de testes de API própria (que executa requisições Fetch reais). Os mesmos testes podem ser reproduzidos no Postman/Thunder Client/Insomnia e na aba **Network** do DevTools usando as mesmas URLs e corpos.
+
+## Tecnologias
+
+- HTML5, CSS3 e JavaScript (vanilla)
+- **API Fetch** (GET, POST, PUT, DELETE)
+- **JSON Server** como backend REST simulado
+- Node.js como runtime
+- Git/GitHub (versionamento com tags v1.0–v4.0)
